@@ -1,0 +1,75 @@
+# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+
+# Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition
+# File: C:\Intel\quartus17.1\Projects\ELIX_LowLatDVBT2\ELIX_LowLatDVBT2_DDR3_Bank7A_assignments.csv
+# Generated on: Fri Nov 07 15:33:41 2025
+
+# Note: The column header names should not be changed if you wish to import this .csv file into the Quartus Prime software.
+
+To,Direction,Location,I/O Bank,VREF Group,Fitter Location,I/O Standard,Reserved,Current Strength,Slew Rate,Differential Pair,Transceiver Analog Settings Protocol,VCCR_GXB/VCCT_GXB Voltage,Transceiver I/O Pin Termination,Transceiver Dedicated Refclk Pin Termination,Transmitter Common Mode Driver Voltage,Transmitter Slew Rate Control,Transmitter Differential Output Voltage,Receiver Buffer Common Mode Voltage,Strict Preservation
+altera_reserved_tck,Input,,,,PIN_V5,,,,,,,,,,,,,,
+altera_reserved_tdi,Input,,,,PIN_W5,,,,,,,,,,,,,,
+altera_reserved_tdo,Output,,,,PIN_M5,,,,,,,,,,,,,,
+altera_reserved_tms,Input,,,,PIN_P5,,,,,,,,,,,,,,
+clk_clk,Input,,,,PIN_H16,SSTL-15,,,,,,,,,,,,,
+memory_mem_a[12],Output,PIN_A14,7A,B7A_N0,PIN_A14,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[11],Output,PIN_F15,7A,B7A_N0,PIN_F15,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[10],Output,PIN_B18,7A,B7A_N0,PIN_B18,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[9],Output,PIN_E16,7A,B7A_N0,PIN_E16,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[8],Output,PIN_G17,7A,B7A_N0,PIN_G17,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[7],Output,PIN_E15,7A,B7A_N0,PIN_E15,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[6],Output,PIN_G16,7A,B7A_N0,PIN_G16,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[5],Output,PIN_B16,7A,B7A_N0,PIN_B16,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[4],Output,PIN_D17,7A,B7A_N0,PIN_D17,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[3],Output,PIN_B11,7A,B7A_N0,PIN_B11,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[2],Output,PIN_C16,7A,B7A_N0,PIN_C16,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[1],Output,PIN_B17,7A,B7A_N0,PIN_B17,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_a[0],Output,PIN_B13,7A,B7A_N0,PIN_B13,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_ba[2],Output,PIN_J17,7A,B7A_N0,PIN_J17,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_ba[1],Output,PIN_A15,7A,B7A_N0,PIN_A15,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_ba[0],Output,PIN_G11,7A,B7A_N0,PIN_G11,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_cas_n[0],Output,PIN_D19,7A,B7A_N0,PIN_D19,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_ck[0],Output,PIN_H13,7A,B7A_N0,PIN_H13,Differential 1.5-V SSTL Class I,,,,memory_mem_ck_n[0],,,,,,,,,
+memory_mem_ck_n[0],Output,PIN_G13,7A,B7A_N0,PIN_G13,Differential 1.5-V SSTL Class I,,,,memory_mem_ck[0],,,,,,,,,
+memory_mem_cke[0],Output,PIN_B20,7A,B7A_N0,PIN_B20,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_cs_n[0],Output,PIN_E19,7A,B7A_N0,PIN_E19,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_dm[1],Output,PIN_K16,7A,B7A_N0,PIN_K16,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dm[0],Output,PIN_K9,7A,B7A_N0,PIN_K9,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[15],Bidir,PIN_A13,7A,B7A_N0,PIN_A13,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[14],Bidir,PIN_B15,7A,B7A_N0,PIN_B15,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[13],Bidir,PIN_C15,7A,B7A_N0,PIN_C15,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[12],Bidir,PIN_E14,7A,B7A_N0,PIN_E14,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[11],Bidir,PIN_F13,7A,B7A_N0,PIN_F13,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[10],Bidir,PIN_F14,7A,B7A_N0,PIN_F14,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[9],Bidir,PIN_G15,7A,B7A_N0,PIN_G15,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[8],Bidir,PIN_J11,7A,B7A_N0,PIN_J11,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[7],Bidir,PIN_A12,7A,B7A_N0,PIN_A12,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[6],Bidir,PIN_B12,7A,B7A_N0,PIN_B12,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[5],Bidir,PIN_C11,7A,B7A_N0,PIN_C11,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[4],Bidir,PIN_C13,7A,B7A_N0,PIN_C13,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[3],Bidir,PIN_D12,7A,B7A_N0,PIN_D12,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[2],Bidir,PIN_D13,7A,B7A_N0,PIN_D13,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[1],Bidir,PIN_E12,7A,B7A_N0,PIN_E12,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dq[0],Bidir,PIN_F12,7A,B7A_N0,PIN_F12,SSTL-15 Class I,,,,,,,,,,,,,
+memory_mem_dqs[1],Bidir,PIN_H14,7A,B7A_N0,PIN_H14,Differential 1.5-V SSTL Class I,,,,memory_mem_dqs_n[1],,,,,,,,,
+memory_mem_dqs[0],Bidir,PIN_H11,7A,B7A_N0,PIN_H11,Differential 1.5-V SSTL Class I,,,,memory_mem_dqs_n[0],,,,,,,,,
+memory_mem_dqs_n[1],Bidir,PIN_J13,7A,B7A_N0,PIN_J13,Differential 1.5-V SSTL Class I,,,,memory_mem_dqs[1],,,,,,,,,
+memory_mem_dqs_n[0],Bidir,PIN_G12,7A,B7A_N0,PIN_G12,Differential 1.5-V SSTL Class I,,,,memory_mem_dqs[0],,,,,,,,,
+memory_mem_odt[0],Output,PIN_H18,7A,B7A_N0,PIN_H18,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_ras_n[0],Output,PIN_G18,7A,B7A_N0,PIN_G18,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+memory_mem_reset_n,Output,PIN_J18,7A,B7A_N0,PIN_J18,1.5 V,,maximum current,,,,,,,,,,,
+memory_mem_we_n[0],Output,PIN_C20,7A,B7A_N0,PIN_C20,SSTL-15 Class I,,maximum current,,,,,,,,,,,
+oct_rzqin,Input,,,,PIN_T19,SSTL-15,,,,,,,,,,,,,
+reset_reset_n,Input,,,,PIN_M22,,,,,,,,,,,,,,

@@ -1,0 +1,56 @@
+vsim work.ft232h_sync245_if_tb
+# vsim work.ft232h_sync245_if_tb 
+# Start time: 13:35:56 on Dec 12,2025
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading work.ft232h_sync245_if_tb(tb)
+# Loading work.ft232_interface(internal)
+do C:/Users/BPillonel/Documents/ASSISTANAT_PIERRE/HELIX/ELIX_LowLatDVBT2_Quartus/ELIX_LowLatDVBT2/hdl/TB/FT232/wave.do
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: BPillonel  Hostname: IICT-LT8881  ProcessID: 36464
+#           Attempting to use alternate WLF file "./wlftmgs6bj".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftmgs6bj
+run -all
+# ** Note: User side received RX byte = ZZ
+#    Time: 258323 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 47
+#    Time: 274989 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 01
+#    Time: 291655 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 02
+#    Time: 308321 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 03
+#    Time: 324987 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 04
+#    Time: 341653 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 05
+#    Time: 358319 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 06
+#    Time: 374985 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 07
+#    Time: 391651 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 08
+#    Time: 408317 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 09
+#    Time: 424983 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 0A
+#    Time: 441649 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 0B
+#    Time: 458315 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 0C
+#    Time: 474981 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 0D
+#    Time: 491647 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 0E
+#    Time: 508313 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Note: User side received RX byte = 0F
+#    Time: 524979 ps  Iteration: 1  Instance: /ft232h_sync245_if_tb
+# ** Failure: End of simulation
+#    Time: 5 ms  Iteration: 0  Process: /ft232h_sync245_if_tb/end_sim File: C:/Users/BPillonel/Documents/ASSISTANAT_PIERRE/HELIX/ELIX_LowLatDVBT2_Quartus/ELIX_LowLatDVBT2/hdl/TB/FT232/ft_232_tb.vhd
+# Break in Process end_sim at C:/Users/BPillonel/Documents/ASSISTANAT_PIERRE/HELIX/ELIX_LowLatDVBT2_Quartus/ELIX_LowLatDVBT2/hdl/TB/FT232/ft_232_tb.vhd line 257
+# End time: 13:38:30 on Dec 12,2025, Elapsed time: 0:02:34
+# Errors: 0, Warnings: 2
