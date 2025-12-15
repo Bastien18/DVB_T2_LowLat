@@ -172,8 +172,7 @@ begin
                     ft_txe_n <= '1'; -- pretend FT232 FIFO full
                 end if;
 
-                -- Capture data on WR# falling edge while TXE# low
-                if (wr_n_prev_model = '1') and (ft_wr_n = '0') and (ft_txe_n = '0') then
+                if ((ft_wr_n = '0') and (ft_txe_n = '0')) then
                     if tx_capture_idx < MAX_TX_BYTES then
                         tx_capture(tx_capture_idx) <= ft_data;
                         report "FT232 model captured TX byte " &
@@ -206,10 +205,13 @@ begin
                 rx_ready <= '1';
 
                 -- Send a stream of bytes from FPGA to FT232
-                if (tx_ready = '1') and (sent_bytes < MAX_TX_BYTES) then
+                if (sent_bytes < MAX_TX_BYTES) then
                     tx_data  <= std_logic_vector(to_unsigned(16#A0# + sent_bytes, 8));
                     tx_valid <= '1';
-                    sent_bytes := sent_bytes + 1;
+                    
+                    if tx_ready = '1' then
+                        sent_bytes := sent_bytes + 1;
+                    end if;
                 else
                     tx_valid <= '0';
                 end if;
