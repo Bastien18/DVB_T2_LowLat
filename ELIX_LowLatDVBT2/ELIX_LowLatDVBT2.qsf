@@ -346,22 +346,22 @@ set_location_assignment PIN_E21 -to sram_qdrii_rpsn
 set_location_assignment PIN_B21 -to sram_qdrii_bws1n
 set_location_assignment PIN_C21 -to sram_qdrii_bws0n
 set_location_assignment PIN_J17 -to sram_qdrii_d[0]
-set_location_assignment PIN_J18 -to sram_qdrii_d[1]
-set_location_assignment PIN_J19 -to sram_qdrii_d[2]
-set_location_assignment PIN_G17 -to sram_qdrii_d[3]
+set_location_assignment PIN_A15 -to sram_qdrii_d[1]
+set_location_assignment PIN_B15 -to sram_qdrii_d[2]
+set_location_assignment PIN_A13 -to sram_qdrii_d[3]
 set_location_assignment PIN_C11 -to sram_qdrii_d[4]
 set_location_assignment PIN_A12 -to sram_qdrii_d[5]
 set_location_assignment PIN_B12 -to sram_qdrii_d[6]
 set_location_assignment PIN_B13 -to sram_qdrii_d[7]
 set_location_assignment PIN_C13 -to sram_qdrii_d[8]
-set_location_assignment PIN_A13 -to sram_qdrii_d[9]
-set_location_assignment PIN_A14 -to sram_qdrii_d[10]
-set_location_assignment PIN_A15 -to sram_qdrii_d[11]
-set_location_assignment PIN_B15 -to sram_qdrii_d[12]
+set_location_assignment PIN_G17 -to sram_qdrii_d[9]
+set_location_assignment PIN_H21 -to sram_qdrii_d[10]
+set_location_assignment PIN_J21 -to sram_qdrii_d[11]
+set_location_assignment PIN_J19 -to sram_qdrii_d[12]
 set_location_assignment PIN_B16 -to sram_qdrii_d[13]
 set_location_assignment PIN_K16 -to sram_qdrii_d[14]
 set_location_assignment PIN_H18 -to sram_qdrii_d[15]
-set_location_assignment PIN_J21 -to sram_qdrii_d[17]
+set_location_assignment PIN_J18 -to sram_qdrii_d[17]
 set_instance_assignment -name IO_STANDARD "1.8-V HSTL CLASS I" -to sram_qdrii_d[17]
 set_instance_assignment -name IO_STANDARD "1.8-V HSTL CLASS I" -to sram_qdrii_d[0]
 set_instance_assignment -name IO_STANDARD "1.8-V HSTL CLASS I" -to sram_qdrii_d[1]
@@ -387,16 +387,16 @@ set_location_assignment PIN_B20 -to sram_qdrii_a[2]
 set_location_assignment PIN_C20 -to sram_qdrii_a[3]
 set_location_assignment PIN_C15 -to sram_qdrii_a[4]
 set_location_assignment PIN_C16 -to sram_qdrii_a[5]
-set_location_assignment PIN_D19 -to sram_qdrii_a[6]
+set_location_assignment PIN_E15 -to sram_qdrii_a[6]
 set_location_assignment PIN_E14 -to sram_qdrii_a[7]
-set_location_assignment PIN_E15 -to sram_qdrii_a[8]
+set_location_assignment PIN_D19 -to sram_qdrii_a[8]
 set_location_assignment PIN_E19 -to sram_qdrii_a[9]
 set_location_assignment PIN_K9 -to sram_qdrii_a[10]
 set_location_assignment PIN_L8 -to sram_qdrii_a[11]
 set_location_assignment PIN_F22 -to sram_qdrii_a[12]
 set_location_assignment PIN_G21 -to sram_qdrii_a[13]
 set_location_assignment PIN_G22 -to sram_qdrii_a[14]
-set_location_assignment PIN_H21 -to sram_qdrii_a[15]
+set_location_assignment PIN_A14 -to sram_qdrii_a[15]
 set_location_assignment PIN_J22 -to sram_qdrii_a[16]
 set_location_assignment PIN_K20 -to sram_qdrii_a[17]
 set_location_assignment PIN_K19 -to sram_qdrii_d[16]
@@ -576,7 +576,6 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to fpga_config_data7
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ext_bus6
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ext_bus2
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clk_clk
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_location_assignment PIN_M18 -to mpu_gpio0
 set_location_assignment PIN_M22 -to mpu_gpio1
 set_location_assignment PIN_L22 -to mpu_gpio2
@@ -633,3 +632,6 @@ set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to ext_bus
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to fpga_config_data7
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to fpga_config_data6
 set_instance_assignment -name CURRENT_STRENGTH_NEW "MAXIMUM CURRENT" -to fpga_config_data5
+set_global_assignment -name QIP_FILE hdl/DDR3/SDRAM_UNIPHY_CTRL/sdram_uniphy_ctrl.qip
+set_global_assignment -name SIP_FILE hdl/DDR3/SDRAM_UNIPHY_CTRL/sdram_uniphy_ctrl.sip
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
