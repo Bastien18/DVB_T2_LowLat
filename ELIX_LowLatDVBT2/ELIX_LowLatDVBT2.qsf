@@ -502,22 +502,22 @@ set_location_assignment PIN_C8 -to ad_rffe_rx2_sw_v2
 set_location_assignment PIN_A8 -to ad_rffe_tx2_sw_v1
 set_location_assignment PIN_A9 -to ad_rffe_tx2_sw_v2
 set_location_assignment PIN_E9 -to ad_txnrx
-set_location_assignment PIN_P19 -to usb_wrn
-set_location_assignment PIN_R16 -to usb_txen
-set_location_assignment PIN_P18 -to usb_siwun
-set_location_assignment PIN_P22 -to usb_rxfn
-set_location_assignment PIN_P17 -to usb_resetn
-set_location_assignment PIN_R17 -to usb_rdn
-set_location_assignment PIN_P16 -to usb_oen
-set_location_assignment PIN_R21 -to usb_d7
-set_location_assignment PIN_R15 -to usb_d6
-set_location_assignment PIN_T15 -to usb_d5
-set_location_assignment PIN_R22 -to usb_d4
-set_location_assignment PIN_T22 -to usb_d3
-set_location_assignment PIN_T17 -to usb_d2
-set_location_assignment PIN_T18 -to usb_d1
-set_location_assignment PIN_T20 -to usb_d0
-set_location_assignment PIN_T19 -to usb_clkout
+set_location_assignment PIN_R22 -to usb_wrn
+set_location_assignment PIN_T18 -to usb_txen
+set_location_assignment PIN_R21 -to usb_siwun
+set_location_assignment PIN_T19 -to usb_rxfn
+set_location_assignment PIN_R15 -to usb_resetn
+set_location_assignment PIN_P19 -to usb_rdn
+set_location_assignment PIN_T20 -to usb_oen
+set_location_assignment PIN_R17 -to usb_d7
+set_location_assignment PIN_T17 -to usb_d6
+set_location_assignment PIN_P18 -to usb_d5
+set_location_assignment PIN_P17 -to usb_d4
+set_location_assignment PIN_T15 -to usb_d3
+set_location_assignment PIN_R16 -to usb_d2
+set_location_assignment PIN_P16 -to usb_d1
+set_location_assignment PIN_P22 -to usb_d0
+set_location_assignment PIN_T22 -to usb_clkout
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to usb_wrn
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to usb_txen
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to usb_siwun
