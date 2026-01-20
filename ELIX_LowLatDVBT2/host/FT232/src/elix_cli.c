@@ -12,6 +12,7 @@
 #include "ftd2xx.h"
 #include <stdio.h>
 #include <pthread.h>
+#include <unistd.h>
 #include "ringBuffer.h"
 
 #define CLI_ARGUMENT_MIN 2
@@ -67,6 +68,8 @@ void* producerCall(void * args);
  */
 void* consumerCall(void * args);
 
+void cleanUpRessources(ringBuffer_t *rb, FT_HANDLE ftHandle);
+
 //-------------------------------------------------------------------------------------
 //                                  MAIN
 //-------------------------------------------------------------------------------------
@@ -121,7 +124,11 @@ int main(int argc, char **argv){
 
     // Initialize ring buffer for TS data
     ringBuffer_t rBuffer;
-    rbInit(&rBuffer, RING_BUFFER_CAPACITY, RING_BUFFER_BLOCK_SIZE);
+    if(rbInit(&rBuffer, RING_BUFFER_CAPACITY, RING_BUFFER_BLOCK_SIZE)){
+        fprintf(stderr, "Error during ring buffer init\n");
+        cleanUpRessources(&rBuffer, ftHandle);
+        exit(1);
+    }
 
     // Initialize consumer and producer thread
     pthread_t consumerThread;
@@ -138,7 +145,7 @@ int main(int argc, char **argv){
     pthread_join(producerThread, NULL);
 
     // Clean up resources
-    rbFree(&rBuffer);
+    cleanUpRessources(&rBuffer, ftHandle);
     return 0;
 }
 
@@ -161,7 +168,7 @@ int writeAllFt(consArgs_t *consArgs, uint8_t* buf, DWORD len){
         if(!written){
             // Check for a stall from FTDI device. Add a sleep call to avoid tight infinite loop
             printf("[WARNING]FT_Write() operation wrote 0byte. Check for anormal stall from FTDI\n");
-            Sleep(1);
+            usleep(1000);
             continue;
         }
         offset += written;
@@ -175,6 +182,7 @@ void *producerCall(void *args){
     FILE *f = fopen(prodArgs->filename, "rb");
     if(!f){
         fprintf(stderr, "Something went wrong opening file %s\n", prodArgs->filename);
+        rbAbort(prodArgs->ring);
         return NULL;
     }
 
@@ -203,13 +211,21 @@ void *consumerCall(void *args){
     consArgs_t *consArgs = (consArgs_t *)args;
 
     while(1){
-        block_t block = rbPop(consArgs->ring);
+        block_t block = rbAcquireReadSlot(consArgs->ring);
 
         if(block.len > 0){
             if(!writeAllFt(consArgs, block.data, block.len)){
                 fprintf(stderr, "Error trying to write an entire chunk of data to the FTDI device\n");
+                rbAbort(consArgs->ring);
                 return NULL;
             }
+        }
+
+        rbCommitReadSlot(consArgs->ring);
+
+        if(consArgs->ring->abort){
+            fprintf(stderr, "Error aborting consumer thread routine\n");
+            return NULL;
         }
 
         if(block.eof){
@@ -217,4 +233,9 @@ void *consumerCall(void *args){
             return NULL;
         }
     }
+}
+
+void cleanUpRessources(ringBuffer_t *rb, FT_HANDLE ftHandle){
+    rbFree(rb);
+    FT_Close(ftHandle);
 }

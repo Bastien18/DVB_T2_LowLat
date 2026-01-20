@@ -12,18 +12,22 @@
 #include <stdlib.h>
 
 int rbInit(ringBuffer_t *rb, size_t capacity, size_t blockSize){
-    rb->buffer = calloc(rb->capacity, sizeof(block_t));
+    rb->buffer = calloc(capacity, sizeof(block_t));
     if(!rb->buffer){
         return -1;
     }
-    rb->bufferEnd = rb->buffer + (capacity * sizeof(block_t));
     rb->capacity = capacity;
+    rb->bufferEnd = rb->buffer + capacity;
     rb->count = 0;
     rb->head = rb->buffer;
     rb->tail = rb->buffer;
+    rb->abort = 0;
 
     for(size_t i = 0; i < capacity; ++i){
         rb->buffer[i].data = (uint8_t *)malloc(blockSize);
+        if(!rb->buffer[i].data){
+            return -1;
+        }
         rb->buffer[i].len = 0;
         rb->buffer[i].eof = 0;
     }
@@ -48,19 +52,25 @@ void rbFree(ringBuffer_t *rb){
 block_t* rbAcquireWriteSlot(ringBuffer_t *rb){
     pthread_mutex_lock(&rb->mutex);
     // While buffer full, wait for consumer to free some space 
-    while(rb->count == rb->capacity){
+    while(rb->count == rb->capacity && !rb->abort){
         pthread_cond_wait(&rb->cvNotFull, &rb->mutex);
     }
+
+    if(rb->abort){
+        pthread_mutex_unlock(&rb->mutex);
+        return NULL;
+    }
+
     block_t *b = rb->tail;
     pthread_mutex_unlock(&rb->mutex);
     return b;
 }
 
-void *rbCommitWriteSlot(ringBuffer_t *rb, int eof){
+void rbCommitWriteSlot(ringBuffer_t *rb, int eof){
     pthread_mutex_lock(&rb->mutex);
     // If we've reached end of file for this last block 
     rb->tail->eof = eof;
-    rb->tail = rb->tail + sizeof(block_t);
+    rb->tail = rb->tail + 1;
     if(rb->tail == rb->bufferEnd){
         rb->tail = rb->buffer;
     }
@@ -69,19 +79,40 @@ void *rbCommitWriteSlot(ringBuffer_t *rb, int eof){
     pthread_mutex_unlock(&rb->mutex);
 }
 
-block_t rbPop(ringBuffer_t *rb){
+block_t rbAcquireReadSlot(ringBuffer_t *rb){
     block_t b = {0};
     pthread_mutex_lock(&rb->mutex);
-    while(rb->count == 0){
+    while(rb->count == 0 && !rb->abort){
         pthread_cond_wait(&rb->cvNotEmpty, &rb->mutex);
     }
+
+    if(rb->abort){
+        pthread_mutex_unlock(&rb->mutex);
+        b.eof = 0;
+        b.len = 0;
+        return b;
+    }
+
     b = *rb->head;
-    rb->head = rb->head +sizeof(block_t);
+    pthread_mutex_unlock(&rb->mutex);
+    return b;
+}
+
+void rbCommitReadSlot(ringBuffer_t *rb){
+    pthread_mutex_lock(&rb->mutex);
+    rb->head = rb->head + 1;
     if (rb->head == rb->bufferEnd){
         rb->head = rb->buffer;
     }
     rb->count--;
     pthread_cond_signal(&rb->cvNotFull);
     pthread_mutex_unlock(&rb->mutex);
-    return b;
+}
+
+void rbAbort(ringBuffer_t *rb){
+    pthread_mutex_lock(&rb->mutex);
+    rb->abort = 1;
+    pthread_cond_broadcast(&rb->cvNotEmpty);
+    pthread_cond_broadcast(&rb->cvNotFull);
+    pthread_mutex_unlock(&rb->mutex);
 }

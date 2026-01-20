@@ -20,6 +20,7 @@ typedef struct {
     pthread_mutex_t mutex;      // Mutex preventing access by multiple thread
     pthread_cond_t cvNotEmpty;  // Make consumer thread wait when buffer is empty
     pthread_cond_t cvNotFull;   // Make producer thread wait when buffer is full
+    int abort;                // Flag if error appears
 } ringBuffer_t;
 
 /**
@@ -51,7 +52,7 @@ block_t *rbAcquireWriteSlot(ringBuffer_t *rb);
  * @param           
  * @return          
  */
-void *rbCommitWriteSlot(ringBuffer_t *rb, int eof);
+void rbCommitWriteSlot(ringBuffer_t *rb, int eof);
 
 /**
  * @brief           Wait for buffer to have blocks inside it and pops first block
@@ -59,7 +60,15 @@ void *rbCommitWriteSlot(ringBuffer_t *rb, int eof);
  * @param rb        Ptr to ring buffer
  * @return          Ptr to the block popped
  */
-block_t rbPop(ringBuffer_t *rb);
+block_t rbAcquireReadSlot(ringBuffer_t *rb);
+
+void rbCommitReadSlot(ringBuffer_t *rb);
+
+/**
+ * @brief           Sets abort flag to 1 and wake up both condition variable
+ * @param rb        Ptr to ring buffer
+ */
+void rbAbort(ringBuffer_t *rb);
 
 
 #endif
