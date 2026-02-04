@@ -26,6 +26,10 @@ int rbInit(ringBuffer_t *rb, size_t capacity, size_t blockSize){
     for(size_t i = 0; i < capacity; ++i){
         rb->buffer[i].data = (uint8_t *)malloc(blockSize);
         if(!rb->buffer[i].data){
+            for(size_t j = 0; j < i; ++j){
+                free(rb->buffer[j].data);
+                free(rb->buffer);
+            }
             return -1;
         }
         rb->buffer[i].len = 0;
